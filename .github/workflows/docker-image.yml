@@ -17,4 +17,4 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag hectorbarral/trextears-image-autobuild:latest
     - name: Push the Docker image
-      run: docker login -u hectorbarral -p ${{secrets.DOCKER_TOKEN }} && docker push hectorbarral/trextears-image-autobuild:latest
+      run: docker login -u hectorbarral -p ${{ secrets.DOCKER_TOKEN }} && docker push hectorbarral/trextears-image-autobuild:latest
