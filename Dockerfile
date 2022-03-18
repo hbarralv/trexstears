@@ -1,3 +1,3 @@
-FROM ubuntu:lastest
+FROM ubuntu:latest
 
 CMD echo "Hello test Docker"
