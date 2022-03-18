@@ -1,3 +1,3 @@
 FROM ubuntu:lastest
 
-CMD echo "Hello test Docker"
+CMD echo "Hello Test Docker"
