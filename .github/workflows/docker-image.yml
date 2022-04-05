@@ -1,27 +1,13 @@
 name: Docker Image CI
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
-
   build:
 
     runs-on: ubuntu-latest
-    
-    env:
-  DB_DATABASE: trexstears_db
-  DB_USER: root
-  DB_PASSWORD: Pa55w.rd
-steps:
-  - name: Set up MySQL
-    run: |
-      sudo /etc/init.d/mysql start
-      mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
-
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
