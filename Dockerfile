@@ -1,3 +1,8 @@
-FROM ubuntu:latest
+#Create MySQL Image for Trex's Tears
+FROM mysql
+MAINTAINER hbarral@uoc.edu
 
-CMD echo "Hello test Docker"
+ENV MYSQL_ROOT_PASSWORD trexstearspassword
+ADD trexstears_backup.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
