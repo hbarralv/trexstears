@@ -17,10 +17,14 @@
 	<description>Aplicación back-end con tecnología Java en servidores de aplicaciones</description>
 	
 	<properties>
-		<java.version>18</java.version>
+		<java.version>11</java.version>
 	</properties>
 	
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
