@@ -11,7 +11,7 @@ import com.trextears.repository.ProductoRepository;
 
 @Service
 public class ProductoServiceImpl implements ProductoService{
-//Implementamos los metodos CRUD para Producto
+//Implementamos los métodos CRUD para Producto
 	
 	@Autowired
 	private ProductoRepository productoRepository;

@@ -9,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-  <title><b>>¡Tienda Trex's Tears!</b></title>
+  <title>Trex's Tears Shop!</title>
 
 
 <!-- Bootstrap core CSS -->
@@ -45,14 +45,14 @@
            <div class="col-lg-9">
              <div class="card-body">
               <h5 class="card-title">
-                <b>>DATOS ORDEN</b>
+                DATOS ORDEN
               </h5>
               <h6 th:text=" 'Nombre: '+ ${usuario.nombre}"> </h6>
               <h6 th:text="'Correo: '+  ${usuario.email}"></h6>
               <h6 th:text="'Dirección: '+ ${usuario.direccion}" ></h6>
 
               <h5 class="card-title">
-                <b>>PRODUCTOS</b>
+                PRODUCTOS
               </h5>
               <div class="alert alert-light" role="alert">
                 <table class="table">
@@ -84,7 +84,7 @@
 
           <ul class="list-group">
             <li class="list-group-item"><h5 th:text=" 'Total: '+${orden.total}"></h5></li>
-            <a href="#" class="btn btn-dark">Generar</a>
+            <a th:href="@{saveOrder}" class="btn btn-dark">Generar</a>
           </ul>
         </div>
       </div>

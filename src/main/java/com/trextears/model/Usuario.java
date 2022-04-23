@@ -12,10 +12,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name="usuarios")
 
-//Creamos la funcion de la clase.
+//Creamos la función de la clase.
 public class Usuario {
 	
-//Creamos los atributos de la clase que se usaran en la base de datos y damos valor autoincremental a id..
+//Creamos los atributos de la clase que se usarán en la base de datos y damos valor autoincremental a id..
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
@@ -28,15 +28,15 @@ public class Usuario {
 	private String tipo;
 	private String password;
 	
-	//Con JPA le decimos que este atributo tiene una relacion 1-N y estará mapeada por el campo "usuario"
+	//Con JPA le decimos que este atributo tiene una relación 1-N y estará mapeada por el campo "usuario"
 	@OneToMany(mappedBy="usuario")
 	private List<Producto> productos;
 	
-	//Con JPA le decimos que este atributo tiene una relacion 1-N y estará mapeada por el campo "usuario"
+	//Con JPA le decimos que este atributo tiene una relación 1-N y estará mapeada por el campo "usuario"
 	@OneToMany(mappedBy="usuario")
 	private List<Orden> ordenes;
 	
-	//Creamos las funciones getter y setter para que los atributos puedan ser utilizados fuera de este archivo.
+//Creamos las funciones getter y setter para que los atributos puedan ser utilizados fuera de este archivo.
 	public Integer getId() {
 		return id;
 	}
@@ -98,7 +98,7 @@ public class Usuario {
 		this.ordenes = ordenes;
 	}
 	
-	//Creamos la funcion constructor para dar propiedades de objeto a la clase.	
+	//Creamos la función constructor para dar propiedades de objeto a la clase.	
 	public Usuario(Integer id, String nombre, String username, String email, String direccion, String telefono,
 			String tipo, String password) {
 		super();
@@ -111,12 +111,12 @@ public class Usuario {
 		this.tipo = tipo;
 		this.password = password;
 	}
-	//Creamos la funcion constructor vacía para poder utilizar solo alguna de las propiedades.
+	//Creamos la función constructor vacía para poder utilizar solo alguna de las propiedades.
 	public Usuario() {
 		super();
 	}
 	
-	//Creamos la funcion toString por si necesitamos mostrar por consola los parametros para una futura revision de los datos.
+	//Creamos la función toString por si necesitamos mostrar por consola los parámetros para una futura revisión de los datos.
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", username=" + username + ", email=" + email
