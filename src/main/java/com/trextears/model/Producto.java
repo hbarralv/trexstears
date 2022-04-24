@@ -11,10 +11,8 @@ import javax.persistence.Table;
 @Table(name="productos")
 
 public class Producto {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Integer id;
 	private String nombre;
 	private String descripcion;
@@ -24,7 +22,6 @@ public class Producto {
 	
 	@ManyToOne
 	private Usuario usuario;
-	
 	
 	public Integer getId() {
 		return id;
@@ -81,7 +78,6 @@ public class Producto {
 		this.usuario = usuario;
 	}
 	public Producto() {
-		super();
 	}
 	
 	@Override

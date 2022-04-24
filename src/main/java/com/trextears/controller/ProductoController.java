@@ -3,6 +3,8 @@ package com.trextears.controller;
 import java.io.IOException;
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,14 +20,20 @@ import com.trextears.model.Producto;
 import com.trextears.model.Usuario;
 import com.trextears.service.ProductoService;
 import com.trextears.service.UploadFileService;
+import com.trextears.service.UsuarioService;
 
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
 	
 	private final Logger LOGGER= LoggerFactory.getLogger(ProductoController.class);
+	
 	@Autowired
 	private ProductoService productoService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
+	
 	@Autowired
 	private UploadFileService upload;
 	
@@ -41,10 +49,15 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/save")
-	public String save(Producto producto, @RequestParam("img") MultipartFile file) throws IOException {
+	public String save(Producto producto, @RequestParam("img") MultipartFile file, HttpSession session) throws IOException {
 		LOGGER.info("Este es el objeto producto {}",producto);
-		Usuario u = new Usuario(1,"","","","","","ADMIN","admin");
+		
+		
+		
+		Usuario u = usuarioService.findById(Integer.parseInt(session.getAttribute("idusuario").toString() )).get();
 		producto.setUsuario(u);
+		
+		
 		//imagen
 		if(producto.getId()==null) { //entraremos en este if cuando creamos un producto por primera vez.
 			String nombreImagen= upload.saveIgame(file);
@@ -87,7 +100,7 @@ public class ProductoController {
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable Integer id) {
-		Producto p=new Producto();
+		Producto p= new Producto();
 		p=productoService.get(id).get();
 		if(!p.getImagen().equals("default.jpg")){ //Entraremos en este if cuando la imagen no sea DEFAULT
 			upload.deleteImage(p.getImagen());

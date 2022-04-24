@@ -1,14 +1,14 @@
 package com.trextears.model;
 
-
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +17,6 @@ import javax.persistence.Table;
 public class Orden {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Integer id;
 	private String numero;
 	private Date fechaCreacion;
@@ -27,8 +26,8 @@ public class Orden {
 	@ManyToOne
 	private Usuario usuario;
 	
-	@OneToOne(mappedBy="orden")
-	private DetalleOrden detalle;
+	@OneToMany(mappedBy="orden")
+	private List<DetalleOrden> detalle;
 	
 	
 	public Integer getId() {
@@ -67,13 +66,13 @@ public class Orden {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}		
-	public DetalleOrden getDetalle() {
+	
+	public List<DetalleOrden> getDetalle() {
 		return detalle;
 	}
-	public void setDetalle(DetalleOrden detalle) {
+	public void setDetalle(List<DetalleOrden> detalle) {
 		this.detalle = detalle;
 	}
-	
 	public Orden(Integer id, String numero, Date fechaCreacion, Date fechaRecibida, double total, Usuario usuario) {
 		super();
 		this.id = id;
@@ -81,11 +80,9 @@ public class Orden {
 		this.fechaCreacion = fechaCreacion;
 		this.fechaRecibida = fechaRecibida;
 		this.total = total;
-		this.usuario = usuario;
 	}
 	
 	public Orden() {
-		super();
 	}
 	
 	@Override

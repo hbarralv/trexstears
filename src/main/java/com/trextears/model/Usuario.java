@@ -113,7 +113,6 @@ public class Usuario {
 	}
 	//Creamos la función constructor vacía para poder utilizar solo alguna de las propiedades.
 	public Usuario() {
-		super();
 	}
 	
 	//Creamos la función toString por si necesitamos mostrar por consola los parámetros para una futura revisión de los datos.
